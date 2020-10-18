@@ -23,26 +23,6 @@ class NavigatorTest {
     }
 
     @Test
-    void shouldNavigateToRightInOpenSpaceAndShouldWin() {
-        Navigator navigator = new Navigator();
-        String[][] initialRoom = {
-                {".", ".", ".", "x"},
-                {"g", ".", ".", "x"},
-                {".", "b", ".", "e"},
-                {"x", ".", "g", "."}
-        };
-        String[][] expectedRoom = {
-                {".", ".", ".", "x"},
-                {".", ".", "g", "x"},
-                {".", ".", ".", "e"},
-                {"x", ".", ".", "g"}
-        };
-        String[][] finalRoom = navigator.navigate(initialRoom, Direction.RIGHT);
-        Assertions.assertArrayEquals(expectedRoom, finalRoom);
-        Assertions.assertEquals(GameState.WON, navigator.getGameState());
-    }
-
-    @Test
     void shouldNavigateUpInOpenSpace() {
         Navigator navigator = new Navigator();
         String[][] initialRoom = {
@@ -78,5 +58,69 @@ class NavigatorTest {
         };
         String[][] finalRoom = navigator.navigate(initialRoom, Direction.DOWN);
         Assertions.assertArrayEquals(expectedRoom, finalRoom);
+    }
+
+    @Test
+    void shouldNavigateToRightInOpenSpaceAndShouldWin() {
+        Navigator navigator = new Navigator();
+        String[][] initialRoom = {
+                {".", ".", ".", "x"},
+                {"g", ".", ".", "x"},
+                {".", "b", ".", "e"},
+                {"x", ".", "g", "."}
+        };
+        String[][] expectedRoom = {
+                {".", ".", ".", "x"},
+                {".", ".", "g", "x"},
+                {".", ".", ".", "e"},
+                {"x", ".", ".", "g"}
+        };
+        String[][] finalRoom = navigator.navigate(initialRoom, Direction.RIGHT);
+        Assertions.assertArrayEquals(expectedRoom, finalRoom);
+        Assertions.assertEquals(GameState.WON, navigator.getGameState());
+    }
+
+    @Test
+    void shouldNavigateThroughTheFirstFourMovesOfTheGivenInputAndHaveLost() {
+        Navigator navigator = new Navigator();
+        String[][] initialRoom = {
+                {".", "x", ".", "x"},
+                {"g", ".", ".", "e"},
+                {".", "b", ".", "."},
+                {"x", ".", "g", "."}
+        };
+        String[][] expectedRoom = {
+                {"g", "x", ".", "x"},
+                {".", "g", ".", "e"},
+                {".", ".", ".", "."},
+                {"x", ".", ".", "."}
+        };
+        String input = "ludrr";
+        String[][] finalRoom = navigator.initiateNavigation(initialRoom, input);
+        Assertions.assertArrayEquals(expectedRoom, finalRoom);
+        Assertions.assertEquals(GameState.LOST, navigator.getGameState());
+        Assertions.assertEquals(2, navigator.getMoveCount());
+    }
+
+    @Test
+    void shouldNavigateThroughTheFirstFourMovesOfTheGivenInputAndHaveResultedUndecided() {
+        Navigator navigator = new Navigator();
+        String[][] initialRoom = {
+                {".", "x", ".", "x"},
+                {"g", ".", ".", "e"},
+                {".", "b", ".", "."},
+                {"x", ".", "g", "."}
+        };
+        String[][] expectedRoom = {
+                {"g", "x", "g", "x"},
+                {".", "b", ".", "e"},
+                {".", ".", ".", "."},
+                {"x", ".", ".", "."}
+        };
+        String input = "uuuuuu";
+        String[][] finalRoom = navigator.initiateNavigation(initialRoom, input);
+        Assertions.assertArrayEquals(expectedRoom, finalRoom);
+        Assertions.assertEquals(GameState.UNDECIDED, navigator.getGameState());
+        Assertions.assertEquals(4, navigator.getMoveCount());
     }
 }

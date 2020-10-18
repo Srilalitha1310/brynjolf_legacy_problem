@@ -3,6 +3,19 @@ import java.util.List;
 public class Navigator {
 
     private GameState gameState;
+    private int moveCount;
+
+    public String[][] initiateNavigation(String[][] room, String input) {
+        moveCount = 0;
+        gameState = GameState.UNDECIDED;
+        while(gameState.equals(GameState.UNDECIDED) && moveCount < 4) {
+            char value = input.charAt(moveCount);
+            Direction direction = Direction.getDirection(value);
+            room = navigate(room, direction);
+            moveCount++;
+        }
+        return room;
+    }
 
     public String[][] navigate(String[][] room, Direction direction) {
         Coordinates brynjolfCoordinates = Coordinates.findBrynjolf(room);
@@ -32,9 +45,9 @@ public class Navigator {
         }
     }
 
-    private boolean changeGameState(String[][] room, Element element, int x, int y, String anObject) {
-        if (!Element.EMPTY_SPACE.getId().equals(anObject)) {
-            setGameState(element, x, y, room, anObject);
+    private boolean changeGameState(String[][] room, Element element, int x, int y, String neighbourElement) {
+        if (!Element.EMPTY_SPACE.getId().equals(neighbourElement)) {
+            setGameState(element, x, y, room, neighbourElement);
             return true;
         }
         return false;
@@ -51,12 +64,16 @@ public class Navigator {
             return;
         }
         if (element.isCaught(neighbourElement)) {
-            room[x][y] = Element.SECURITY_GUARD.getId();
-            this.gameState = GameState.WON;
+            room[x][y] = Element.EMPTY_SPACE.getId();
+            this.gameState = GameState.LOST;
         }
     }
 
     public GameState getGameState() {
         return this.gameState;
+    }
+
+    public int getMoveCount() {
+        return moveCount;
     }
 }

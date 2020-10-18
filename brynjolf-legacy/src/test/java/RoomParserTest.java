@@ -17,7 +17,7 @@ class RoomParserTest {
         String sampleRoom = ".,.,x\n.,x,.\nx,.,.";
         String[][] expectedRoom = {{".", ".", "x"}, {".", "x", "."}, {"x", ".", "."}};
         Scanner scan = new Scanner(sampleRoom);
-        String[][] room = roomParser.parse(scan);
+        String[][] room = roomParser.parse(scan, 3);
         Assertions.assertArrayEquals(expectedRoom, room);
     }
 }
