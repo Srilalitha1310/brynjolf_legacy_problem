@@ -1,3 +1,5 @@
+import java.util.List;
+
 public enum Element {
     EMPTY_SPACE("."),
     SECURITY_GUARD("g"),
@@ -13,5 +15,12 @@ public enum Element {
 
     public String getId() {
         return id;
+    }
+
+    public List<String> getTraversableElements() {
+        if (this.equals(BRYNJOLF)) {
+            return List.of(Element.EMPTY_SPACE.getId(), Element.EXIT.getId());
+        }
+        return List.of(Element.EMPTY_SPACE.getId());
     }
 }
