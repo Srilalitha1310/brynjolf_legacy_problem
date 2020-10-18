@@ -17,10 +17,12 @@ public enum Element {
         return id;
     }
 
-    public List<String> getTraversableElements() {
-        if (this.equals(BRYNJOLF)) {
-            return List.of(Element.EMPTY_SPACE.getId(), Element.EXIT.getId());
-        }
-        return List.of(Element.EMPTY_SPACE.getId());
+    public boolean isCaught(String neighbourElement) {
+        return (this.equals(BRYNJOLF) && neighbourElement.equals(SECURITY_GUARD.getId())) ||
+                this.equals(SECURITY_GUARD) && neighbourElement.equals(BRYNJOLF.getId());
+    }
+
+    public boolean isOnExit(String neighbourElement) {
+        return this.equals(BRYNJOLF) && neighbourElement.equals(EXIT.getId());
     }
 }

@@ -23,7 +23,7 @@ class NavigatorTest {
     }
 
     @Test
-    void shouldNavigateToRightInOpenSpace() {
+    void shouldNavigateToRightInOpenSpaceAndShouldWin() {
         Navigator navigator = new Navigator();
         String[][] initialRoom = {
                 {".", ".", ".", "x"},
@@ -34,11 +34,12 @@ class NavigatorTest {
         String[][] expectedRoom = {
                 {".", ".", ".", "x"},
                 {".", ".", "g", "x"},
-                {".", ".", ".", "b"},
+                {".", ".", ".", "e"},
                 {"x", ".", ".", "g"}
         };
         String[][] finalRoom = navigator.navigate(initialRoom, Direction.RIGHT);
         Assertions.assertArrayEquals(expectedRoom, finalRoom);
+        Assertions.assertEquals(GameState.WON, navigator.getGameState());
     }
 
     @Test
