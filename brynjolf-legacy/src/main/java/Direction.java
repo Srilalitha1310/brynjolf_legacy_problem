@@ -1,3 +1,8 @@
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+@Getter
+@AllArgsConstructor
 public enum Direction {
     UP(-1, 0, 'u'),
     DOWN(1, 0, 'd'),
@@ -8,12 +13,6 @@ public enum Direction {
     private int y_factor;
     private char value;
 
-    Direction(int x_factor, int y_factor, char value) {
-        this.x_factor = x_factor;
-        this.y_factor = y_factor;
-        this.value = value;
-    }
-
     public static Direction getDirection(char value) {
         for(Direction direction: Direction.values()) {
             if (direction.value == value) {
@@ -21,13 +20,5 @@ public enum Direction {
             }
         }
         return null;
-    }
-
-    public int getX_factor() {
-        return x_factor;
-    }
-
-    public int getY_factor() {
-        return y_factor;
     }
 }

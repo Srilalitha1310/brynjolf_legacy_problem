@@ -1,5 +1,8 @@
-import java.util.List;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 
+@Getter
+@AllArgsConstructor
 public enum Element {
     EMPTY_SPACE("."),
     SECURITY_GUARD("g"),
@@ -8,14 +11,6 @@ public enum Element {
     WALL("x");
 
     private String id;
-
-    Element(String id) {
-        this.id = id;
-    }
-
-    public String getId() {
-        return id;
-    }
 
     public boolean isCaught(String neighbourElement) {
         return (this.equals(BRYNJOLF) && neighbourElement.equals(SECURITY_GUARD.getId())) ||

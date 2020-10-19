@@ -1,5 +1,8 @@
+import lombok.Getter;
+
 import java.util.List;
 
+@Getter
 public class Navigator {
 
     private GameState gameState;
@@ -67,13 +70,5 @@ public class Navigator {
             room[x][y] = Element.EMPTY_SPACE.getId();
             this.gameState = GameState.LOST;
         }
-    }
-
-    public GameState getGameState() {
-        return this.gameState;
-    }
-
-    public int getMoveCount() {
-        return moveCount;
     }
 }

@@ -1,22 +1,14 @@
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
+@AllArgsConstructor
 public class Coordinates {
     private int x;
     private int y;
-
-    public Coordinates(int x, int y) {
-        this.x = x;
-        this.y = y;
-    }
-
-    public int getX() {
-        return x;
-    }
-
-    public int getY() {
-        return y;
-    }
 
     public static Coordinates findBrynjolf(String[][] room) {
         for (int row=0; row < room.length; row++) {
