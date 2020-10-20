@@ -16,10 +16,6 @@ public class RoomParser {
         return this.parse(getScanner(file), roomLength);
     }
 
-    private Scanner getScanner(URL file) throws FileNotFoundException {
-        return new Scanner(new FileReader(file.getFile()));
-    }
-
     public int findRoomLength(Scanner scan) {
         int length = scan.nextLine().split(ROOM_ELEMENTS_DELIMITER).length;
         if (length <= MAX_ALLOWED_ROOM_LENGTH) {
@@ -47,5 +43,9 @@ public class RoomParser {
             }
             System.out.println();
         }
+    }
+
+    private Scanner getScanner(URL file) throws FileNotFoundException {
+        return new Scanner(new FileReader(file.getFile()));
     }
 }
