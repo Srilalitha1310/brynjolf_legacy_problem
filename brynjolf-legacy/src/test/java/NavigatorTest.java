@@ -1,4 +1,4 @@
-import app.Direction;
+import app.movement.Direction;
 import app.GameState;
 import app.Navigator;
 import org.junit.jupiter.api.Assertions;

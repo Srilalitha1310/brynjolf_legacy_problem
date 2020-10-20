@@ -1,6 +1,6 @@
-import app.InputParser;
+import app.parsers.InputParser;
 import app.Navigator;
-import app.RoomParser;
+import app.parsers.RoomParser;
 
 import java.io.FileNotFoundException;
 

@@ -1,5 +1,6 @@
 package app;
 
+import app.movement.Direction;
 import lombok.Getter;
 
 import java.util.List;
