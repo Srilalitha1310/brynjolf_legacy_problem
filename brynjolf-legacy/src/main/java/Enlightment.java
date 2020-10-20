@@ -1,15 +1,11 @@
-import app.GameState;
-import app.Navigator;
-import app.PathTracker;
-import app.RoomParser;
+import app.*;
 
 import java.io.FileNotFoundException;
-import java.util.Scanner;
 
 public class Enlightment {
     public static void main(String args[]) throws FileNotFoundException {
         String[][] room = new RoomParser().getRoom();
-        String input = getInput();
+        String input = new InputParser().getInput();
         getResult(room, input);
     }
 
@@ -21,11 +17,5 @@ public class Enlightment {
             return;
         }
         System.out.println("Stuck: " + "No way to win");
-    }
-
-    private static String getInput() {
-        System.out.println("Enter the move sequence");
-        Scanner in = new Scanner(System.in);
-        return in.nextLine();
     }
 }

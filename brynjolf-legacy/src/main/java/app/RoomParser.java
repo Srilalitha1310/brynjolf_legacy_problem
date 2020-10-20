@@ -5,19 +5,20 @@ import java.io.FileReader;
 import java.net.URL;
 import java.util.Scanner;
 
+import static app.Constants.*;
+
 public class RoomParser {
     public String[][] getRoom() throws FileNotFoundException {
-        String fileName = ("app/room.txt");
-        URL file = getClass().getClassLoader().getResource(fileName);
+        URL file = getClass().getClassLoader().getResource(FILE_NAME);
         Scanner scan = new Scanner(new FileReader(file.getFile()));
-        return this.parse(scan, 4);
+        return this.parse(scan, ROOM_LENGTH);
     }
 
     public String[][] parse(Scanner scan, int length) {
         String[][] room = new String[length][];
         int i=0;
         while(scan.hasNextLine()) {
-            room[i] = scan.nextLine().split(",");
+            room[i] = scan.nextLine().split(ROOM_ELEMENT_DELIMITER);
             i++;
         }
         System.out.println("The given room:");
@@ -26,9 +27,9 @@ public class RoomParser {
     }
 
     public void printRoom(String[][] room) {
-        for (int row = 0; row < room.length; row++){
-            for (int column = 0; column < room[0].length; column++){
-                System.out.print(room[row][column] + "\t");
+        for (String[] strings : room) {
+            for (int column = 0; column < room[0].length; column++) {
+                System.out.print(strings[column] + "\t");
             }
             System.out.println();
         }

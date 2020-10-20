@@ -5,6 +5,8 @@ import lombok.Getter;
 import java.util.ArrayList;
 import java.util.List;
 
+import static app.Constants.ENLIGHTMENT_MAX_MOVE_COUNT;
+
 @Getter
 public class PathTracker {
     private GameState gameState;
@@ -69,7 +71,7 @@ public class PathTracker {
         String tempPath = path;
         if (condition) {
             tempPath = tempPath.concat(String.valueOf(direction.getValue()));
-            navigator.initiateNavigation(room, tempPath, 20);
+            navigator.initiateNavigation(room, tempPath, ENLIGHTMENT_MAX_MOVE_COUNT);
             if (navigator.getGameState().equals(GameState.WON)) {
                 gameState = navigator.getGameState();
                 canGo.add(String.valueOf(direction.getValue()));
