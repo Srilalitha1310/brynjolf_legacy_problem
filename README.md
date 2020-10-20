@@ -19,6 +19,9 @@ Assumption 5:
 Assumption 6:
 > "ur" should be similar to "ru", as both are possible reaches the exit.
 
+Assumption 7:
+> The given room is solutionizable and exit is always on a corner.
+
 Problem 1 : [Establishment]
 
 - Input: 
