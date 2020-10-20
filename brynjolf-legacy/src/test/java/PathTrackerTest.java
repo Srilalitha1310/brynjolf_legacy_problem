@@ -13,6 +13,7 @@ class PathTrackerTest {
         };
         String path = pathTracker.solve(room, "");
         Assertions.assertEquals("r", path);
+        Assertions.assertEquals(GameState.WON, pathTracker.getGameState());
     }
 
     @Test
@@ -26,6 +27,7 @@ class PathTrackerTest {
         };
         String path = pathTracker.solve(room, "");
         Assertions.assertEquals("ru", path);
+        Assertions.assertEquals(GameState.WON, pathTracker.getGameState());
     }
 
     @Test
@@ -39,6 +41,7 @@ class PathTrackerTest {
         };
         String path = pathTracker.solve(room, "ududu");
         Assertions.assertEquals("ududur", path);
+        Assertions.assertEquals(GameState.WON, pathTracker.getGameState());
     }
 
     @Test
@@ -52,5 +55,6 @@ class PathTrackerTest {
         };
         String path = pathTracker.solve(room, "d");
         Assertions.assertEquals("d", path);
+        Assertions.assertEquals(GameState.STUCK, pathTracker.getGameState());
     }
 }

@@ -1,6 +1,9 @@
+import lombok.Getter;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
 public class PathTracker {
     private GameState gameState;
     private Navigator navigator;
@@ -10,7 +13,11 @@ public class PathTracker {
         gameState = GameState.UNDECIDED;
         Coordinates brynjolfCoordinates = Coordinates.findElement(room, Element.BRYNJOLF);
         Coordinates exitCoordinates = Coordinates.findElement(room, Element.EXIT);
-        return findWinningPath(room, path, brynjolfCoordinates, exitCoordinates);
+        String winningPath = findWinningPath(room, path, brynjolfCoordinates, exitCoordinates);
+        if (winningPath.equals(path)) {
+            gameState = GameState.STUCK;
+        }
+        return winningPath;
     }
 
     private String findWinningPath(String[][] room, String path, Coordinates brynjolfCoordinates, Coordinates exitCoordinates) {
