@@ -1,6 +1,18 @@
+package app;
+
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.net.URL;
 import java.util.Scanner;
 
 public class RoomParser {
+    public String[][] getRoom() throws FileNotFoundException {
+        String fileName = ("app/room.txt");
+        URL file = getClass().getClassLoader().getResource(fileName);
+        Scanner scan = new Scanner(new FileReader(file.getFile()));
+        return this.parse(scan, 4);
+    }
+
     public String[][] parse(Scanner scan, int length) {
         String[][] room = new String[length][];
         int i=0;

@@ -1,3 +1,5 @@
+import app.Coordinates;
+import app.Element;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

@@ -1,3 +1,6 @@
+import app.Direction;
+import app.GameState;
+import app.Navigator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
