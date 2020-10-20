@@ -6,4 +6,5 @@ public class Constants {
     public static final int ENLIGHTMENT_MAX_MOVE_COUNT = 20;
     public static final String ROOM_ELEMENTS_DELIMITER = ",";
     public static final int MAX_ALLOWED_ROOM_LENGTH = 10;
+    public static final int GUARDS_COUNT = 2;
 }
