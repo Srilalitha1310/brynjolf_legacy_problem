@@ -10,10 +10,10 @@ public class Establishment {
     public static void main(String args[]) throws FileNotFoundException {
         String[][] room = new RoomParser().getRoom();
         String input = new InputParser().getInput();
-        getResult(room, input);
+        play(room, input);
     }
 
-    private static void getResult(String[][] room, String input) {
+    private static void play(String[][] room, String input) {
         Navigator navigator = new Navigator();
         String[][] result = navigator.initiateNavigation(room, input, ESTABLISHMENT_MAX_MOVE_COUNT);
         System.out.println("The resulting room :");
