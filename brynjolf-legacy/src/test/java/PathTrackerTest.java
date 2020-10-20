@@ -1,10 +1,17 @@
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class PathTrackerTest {
+    PathTracker pathTracker;
+
+    @BeforeEach
+    void setUp() {
+        pathTracker = new PathTracker();
+    }
+
     @Test
     void shouldFindPathToExitForTheGivenRoom() {
-        PathTracker pathTracker = new PathTracker();
         String[][] room = {
                 {".", ".", ".", "x"},
                 {"g", ".", ".", "x"},
@@ -18,7 +25,6 @@ class PathTrackerTest {
 
     @Test
     void shouldGetTheWinningMovesWhenInputIsEmpty() {
-        PathTracker pathTracker = new PathTracker();
         String[][] room = {
                 {".", "x", ".", "x"},
                 {"g", ".", ".", "e"},
@@ -32,7 +38,6 @@ class PathTrackerTest {
 
     @Test
     void shouldExecuteTheGivenMovesAndPrintTheRest() {
-        PathTracker pathTracker = new PathTracker();
         String[][] room = {
                 {".", "x", ".", "x"},
                 {"g", ".", ".", "e"},
@@ -46,7 +51,6 @@ class PathTrackerTest {
 
     @Test
     void shouldBeStuckOnAWrongMove() {
-        PathTracker pathTracker = new PathTracker();
         String[][] room = {
                 {".", ".", ".", "x"},
                 {"g", ".", ".", "."},
