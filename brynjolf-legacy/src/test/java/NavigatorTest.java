@@ -96,7 +96,7 @@ class NavigatorTest {
                 {"x", ".", ".", "."}
         };
         String input = "ludrr";
-        String[][] finalRoom = navigator.initiateNavigation(initialRoom, input);
+        String[][] finalRoom = navigator.initiateNavigation(initialRoom, input, 4);
         Assertions.assertArrayEquals(expectedRoom, finalRoom);
         Assertions.assertEquals(GameState.LOST, navigator.getGameState());
         Assertions.assertEquals(2, navigator.getMoveCount());
@@ -118,9 +118,31 @@ class NavigatorTest {
                 {"x", ".", ".", "."}
         };
         String input = "uuuuuu";
-        String[][] finalRoom = navigator.initiateNavigation(initialRoom, input);
+        String[][] finalRoom = navigator.initiateNavigation(initialRoom, input, 4);
         Assertions.assertArrayEquals(expectedRoom, finalRoom);
         Assertions.assertEquals(GameState.UNDECIDED, navigator.getGameState());
         Assertions.assertEquals(4, navigator.getMoveCount());
+    }
+
+    @Test
+    void shouldNavigateThroughTheGivenInputEvenIfInputLengthIsLessThanFour() {
+        Navigator navigator = new Navigator();
+        String[][] initialRoom = {
+                {"g", "x", ".", "x"},
+                {".", "b", ".", "e"},
+                {".", ".", ".", "."},
+                {"x", ".", "g", "."}
+        };
+        String[][] expectedRoom = {
+                {".", "x", ".", "x"},
+                {".", ".", ".", "e"},
+                {"g", ".", ".", "."},
+                {"x", "b", "g", "."}
+        };
+        String input = "d";
+        String[][] finalRoom = navigator.initiateNavigation(initialRoom, input, 4);
+        Assertions.assertArrayEquals(expectedRoom, finalRoom);
+        Assertions.assertEquals(GameState.UNDECIDED, navigator.getGameState());
+        Assertions.assertEquals(1, navigator.getMoveCount());
     }
 }

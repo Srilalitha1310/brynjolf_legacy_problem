@@ -10,10 +10,10 @@ public class Coordinates {
     private int x;
     private int y;
 
-    public static Coordinates findBrynjolf(String[][] room) {
+    public static Coordinates findElement(String[][] room, Element element) {
         for (int row=0; row < room.length; row++) {
             for (int column=0; column < room[0].length; column++) {
-                if (room[row][column].equals(Element.BRYNJOLF.getId())) {
+                if (room[row][column].equals(element.getId())) {
                     return new Coordinates(row, column);
                 }
             }

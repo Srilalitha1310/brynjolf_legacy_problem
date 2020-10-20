@@ -12,7 +12,7 @@ public class Establishment {
 
     private static void getResult(String[][] room, String input) {
         Navigator navigator = new Navigator();
-        String[][] result = navigator.initiateNavigation(room, input);
+        String[][] result = navigator.initiateNavigation(room, input, 4);
         System.out.println("The resulting room :");
         new RoomParser().printRoom(result);
         System.out.println(String.format("%s : Executed %d moves out of %d", navigator.getGameState(),

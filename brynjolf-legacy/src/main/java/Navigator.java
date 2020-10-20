@@ -8,10 +8,10 @@ public class Navigator {
     private GameState gameState;
     private int moveCount;
 
-    public String[][] initiateNavigation(String[][] room, String input) {
+    public String[][] initiateNavigation(String[][] room, String input, int maxAllowedMoves) {
         moveCount = 0;
         gameState = GameState.UNDECIDED;
-        while(gameState.equals(GameState.UNDECIDED) && moveCount < 4) {
+        while(gameState.equals(GameState.UNDECIDED) && moveCount < maxAllowedMoves && moveCount < input.length()) {
             char value = input.charAt(moveCount);
             Direction direction = Direction.getDirection(value);
             room = navigate(room, direction);
@@ -21,7 +21,7 @@ public class Navigator {
     }
 
     public String[][] navigate(String[][] room, Direction direction) {
-        Coordinates brynjolfCoordinates = Coordinates.findBrynjolf(room);
+        Coordinates brynjolfCoordinates = Coordinates.findElement(room, Element.BRYNJOLF);
         List<Coordinates> guardCoordinates = Coordinates.findGuards(room);
         move(room, brynjolfCoordinates, Element.BRYNJOLF, direction);
         move(room, guardCoordinates.get(0), Element.SECURITY_GUARD, direction);

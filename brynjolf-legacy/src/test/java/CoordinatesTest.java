@@ -3,8 +3,6 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class CoordinatesTest {
 
     @Test
@@ -15,7 +13,7 @@ class CoordinatesTest {
                 {".", "b", ".", "e"},
                 {"x", ".", "g", "."}
         };
-        Coordinates brynjolfCoordinates = Coordinates.findBrynjolf(room);
+        Coordinates brynjolfCoordinates = Coordinates.findElement(room, Element.BRYNJOLF);
         Assertions.assertEquals(2, brynjolfCoordinates.getX());
         Assertions.assertEquals(1, brynjolfCoordinates.getY());
     }
